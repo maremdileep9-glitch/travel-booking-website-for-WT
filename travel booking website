@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TravelEase | Travel Booking</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f8f9fa;
+    color: #222;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+
+    background: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    z-index: 1000;
+
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #222;
+}
+
+.logo span {
+    color: #ff6b35;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff6b35;
+}
+
+.login-btn {
+    background: #ff6b35;
+    color: white;
+
+    border: none;
+    padding: 11px 22px;
+
+    border-radius: 25px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+.login-btn:hover {
+    background: #e85a27;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 720px;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    ),
+    url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=80");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 100px 20px 50px;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 1100px;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 62px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #ffb703;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 45px;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box {
+    background: white;
+    color: #222;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    display: flex;
+    gap: 15px;
+
+    text-align: left;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.search-item {
+    flex: 1;
+}
+
+.search-item label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.search-item input,
+.search-item select {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+.search-button {
+
+    align-self: end;
+
+    padding: 14px 30px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #ff6b35;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background: #e85a27;
+}
+
+
+/* =========================
+   COMMON SECTION
+========================= */
+
+section {
+    padding: 90px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #777;
+}
+
+
+/* =========================
+   DESTINATIONS
+========================= */
+
+.destination-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 30px;
+
+    max-width: 1200px;
+
+    margin: auto;
+}
+
+.destination-card {
+
+    background: white;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.1);
+
+    transition: 0.3s;
+}
+
+.destination-card:hover {
+    transform: translateY(-10px);
+}
+
+.destination-card img {
+
+    width: 100%;
+    height: 240px;
+
+    object-fit: cover;
+}
+
+.destination-info {
+    padding: 22px;
+}
+
+.destination-info h3 {
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.location {
+    color: #ff6b35;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.destination-info p {
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.destination-bottom {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.price {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: #ff6b35;
+}
+
+.book-button {
+
+    border: none;
+
+    background: #ff6b35;
+
+    color: white;
+
+    padding: 10px 18px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+.book-button:hover {
+    background: #e85a27;
+}
+
+
+/* =========================
+   PACKAGES
+========================= */
+
+.packages {
+    background: #fff;
+}
+
+.package-grid {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 30px;
+}
+
+.package-card {
+
+    border: 1px solid #eee;
+
+    border-radius: 15px;
+
+    padding: 30px;
+
+    transition: 0.3s;
+}
+
+.package-card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.package-card h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.package-price {
+
+    font-size: 28px;
+
+    color: #ff6b35;
+
+    font-weight: bold;
+
+    margin: 15px 0;
+}
+
+.package-card ul {
+
+    list-style: none;
+
+    margin-bottom: 20px;
+}
+
+.package-card li {
+
+    margin: 10px 0;
+
+    color: #666;
+}
+
+
+/* =========================
+   WHY US
+========================= */
+
+.why-us {
+    background: #f1f3f5;
+}
+
+.features {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 25px;
+}
+
+.feature {
+
+    background: white;
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    border-radius: 15px;
+}
+
+.feature-icon {
+
+    font-size: 42px;
+
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    margin-bottom: 10px;
+}
+
+.feature p {
+    color: #777;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   BOOKING
+========================= */
+
+.booking-section {
+    background: white;
+}
+
+.booking-container {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    background: #f8f9fa;
+
+    padding: 35px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 5px 25px rgba(0,0,0,0.08);
+}
+
+.booking-container h2 {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+}
+
+.submit-booking {
+
+    width: 100%;
+
+    padding: 14px;
+
+    background: #ff6b35;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+.submit-booking:hover {
+    background: #e85a27;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    background: #222;
+
+    color: white;
+
+    padding: 60px 7% 20px;
+}
+
+.footer-grid {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 40px;
+
+    margin-bottom: 40px;
+}
+
+.footer-column h3 {
+
+    margin-bottom: 15px;
+}
+
+.footer-column p {
+
+    color: #aaa;
+
+    line-height: 1.7;
+}
+
+.footer-column a {
+
+    display: block;
+
+    color: #aaa;
+
+    text-decoration: none;
+
+    margin: 8px 0;
+}
+
+.footer-column a:hover {
+    color: white;
+}
+
+.copyright {
+
+    text-align: center;
+
+    border-top: 1px solid #444;
+
+    padding-top: 20px;
+
+    color: #aaa;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+
+    display: none;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.6);
+
+    z-index: 2000;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.modal-content {
+
+    background: white;
+
+    width: 90%;
+
+    max-width: 450px;
+
+    padding: 35px;
+
+    border-radius: 15px;
+
+    position: relative;
+
+    text-align: center;
+}
+
+.close {
+
+    position: absolute;
+
+    top: 12px;
+    right: 18px;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+.modal-content h2 {
+
+    margin-bottom: 20px;
+}
+
+.modal-content input {
+
+    width: 100%;
+
+    padding: 13px;
+
+    margin: 8px 0;
+
+    border: 1px solid #ddd;
+
+    border-radius: 7px;
+}
+
+.modal-content button {
+
+    width: 100%;
+
+    padding: 13px;
+
+    margin-top: 10px;
+
+    border: none;
+
+    background: #ff6b35;
+
+    color: white;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 900px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .destination-grid,
+    .package-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .features {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media(max-width: 600px) {
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .hero {
+        min-height: 800px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .destination-grid,
+    .package-grid,
+    .features,
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 60px 20px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        Travel<span>Ease</span>
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="#home">Home</a>
+        </li>
+
+        <li>
+            <a href="#destinations">Destinations</a>
+        </li>
+
+        <li>
+            <a href="#packages">Packages</a>
+        </li>
+
+        <li>
+            <a href="#booking">Book Now</a>
+        </li>
+
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <button class="login-btn" onclick="openLogin()">
+        Login
+    </button>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>
+            Explore The World
+            <br>
+            <span>One Journey At A Time</span>
+        </h1>
+
+        <p>
+            Discover amazing destinations,
+            unforgettable experiences and
+            affordable travel packages.
+        </p>
+
+
+        <div class="search-box">
+
+            <div class="search-item">
+
+                <label>
+                    Destination
+                </label>
+
+                <input
+                    type="text"
+                    id="searchDestination"
+                    placeholder="Where do you want to go?"
+                >
+
+            </div>
+
+
+            <div class="search-item">
+
+                <label>
+                    Travel Date
+                </label>
+
+                <input
+                    type="date"
+                    id="searchDate"
+                >
+
+            </div>
+
+
+            <div class="search-item">
+
+                <label>
+                    Travellers
+                </label>
+
+                <input
+                    type="number"
+                    id="searchTravellers"
+                    value="1"
+                    min="1"
+                >
+
+            </div>
+
+
+            <button
+                class="search-button"
+                onclick="searchTrips()"
+            >
+                Search
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     DESTINATIONS
+========================= -->
+
+<section id="destinations">
+
+    <div class="section-title">
+
+        <h2>
+            Popular Destinations
+        </h2>
+
+        <p>
+            Explore India's most beautiful destinations
+        </p>
+
+    </div>
+
+
+    <div class="destination-grid">
+
+
+        <!-- GOA -->
+
+        <div class="destination-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=900&q=80"
+                alt="Goa"
+            >
+
+            <div class="destination-info">
+
+                <h3>
+                    Goa
+                </h3>
+
+                <div class="location">
+                    📍 Goa, India
+                </div>
+
+                <p>
+                    Enjoy beautiful beaches,
+                    nightlife and unforgettable
+                    sunsets.
+                </p>
+
+                <div class="destination-bottom">
+
+                    <div class="price">
+                        ₹12,999
+                    </div>
+
+                    <button
+                        class="book-button"
+                        onclick="selectDestination('Goa')"
+                    >
+                        Book
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- KERALA -->
+
+        <div class="destination-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=900&q=80"
+                alt="Kerala"
+            >
+
+            <div class="destination-info">
+
+                <h3>
+                    Kerala
+                </h3>
+
+                <div class="location">
+                    📍 Kerala, India
+                </div>
+
+                <p>
+                    Experience peaceful backwaters,
+                    greenery and beautiful beaches.
+                </p>
+
+                <div class="destination-bottom">
+
+                    <div class="price">
+                        ₹15,999
+                    </div>
+
+                    <button
+                        class="book-button"
+                        onclick="selectDestination('Kerala')"
+                    >
+                        Book
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MANALI -->
+
+        <div class="destination-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=900&q=80"
+                alt="Manali"
+            >
+
+            <div class="destination-info">
+
+                <h3>
+                    Manali
+                </h3>
+
+                <div class="location">
+                    📍 Himachal Pradesh, India
+                </div>
+
+                <p>
+                    Explore mountains, snow,
+                    valleys and exciting adventures.
+                </p>
+
+                <div class="destination-bottom">
+
+                    <div class="price">
+                        ₹18,999
+                    </div>
+
+                    <button
+                        class="book-button"
+                        onclick="selectDestination('Manali')"
+                    >
+                        Book
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- JAIPUR -->
+
+        <div class="destination-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=900&q=80"
+                alt="Jaipur"
+            >
+
+            <div class="destination-info">
+
+                <h3>
+                    Jaipur
+                </h3>
+
+                <div class="location">
+                    📍 Rajasthan, India
+                </div>
+
+                <p>
+                    Discover royal palaces,
+                    forts and rich Indian culture.
+                </p>
+
+                <div class="destination-bottom">
+
+                    <div class="price">
+                        ₹10,999
+                    </div>
+
+                    <button
+                        class="book-button"
+                        onclick="selectDestination('Jaipur')"
+                    >
+                        Book
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MUMBAI -->
+
+        <div class="destination-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=900&q=80"
+                alt="Mumbai"
+            >
+
+            <div class="destination-info">
+
+                <h3>
+                    Mumbai
+                </h3>
+
+                <div class="location">
+                    📍 Maharashtra, India
+                </div>
+
+                <p>
+                    Experience India's city of dreams,
+                    beaches and amazing food.
+                </p>
+
+                <div class="destination-bottom">
+
+                    <div class="price">
+                        ₹9,999
+                    </div>
+
+                    <button
+                        class="book-button"
+                        onclick="selectDestination('Mumbai')"
+                    >
+                        Book
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- LADAKH -->
+
+        <div class="destination-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=900&q=80"
+                alt="Ladakh"
+            >
+
+            <div class="destination-info">
+
+                <h3>
+                    Ladakh
+                </h3>
+
+                <div class="location">
+                    📍 Ladakh, India
+                </div>
+
+                <p>
+                    Discover breathtaking mountains,
+                    lakes and adventurous roads.
+                </p>
+
+                <div class="destination-bottom">
+
+                    <div class="price">
+                        ₹21,999
+                    </div>
+
+                    <button
+                        class="book-button"
+                        onclick="selectDestination('Ladakh')"
+                    >
+                        Book
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     PACKAGES
+========================= -->
+
+<section class="packages" id="packages">
+
+    <div class="section-title">
+
+        <h2>
+            Travel Packages
+        </h2>
+
+        <p>
+            Choose a package that suits your journey
+        </p>
+
+    </div>
+
+
+    <div class="package-grid">
+
+
+        <div class="package-card">
+
+            <h3>
+                Beach Escape
+            </h3>
+
+            <p>
+                Perfect for relaxing beach holidays.
+            </p>
+
+            <div class="package-price">
+                ₹12,999
+            </div>
+
+            <ul>
+
+                <li>✓ 4 Days / 3 Nights</li>
+
+                <li>✓ Hotel Stay</li>
+
+                <li>✓ Breakfast</li>
+
+                <li>✓ Sightseeing</li>
+
+                <li>✓ Airport Transfer</li>
+
+            </ul>
+
+            <button
+                class="book-button"
+                onclick="selectDestination('Goa')"
+            >
+                Book Package
+            </button>
+
+        </div>
+
+
+        <div class="package-card">
+
+            <h3>
+                Mountain Adventure
+            </h3>
+
+            <p>
+                Enjoy mountains and adventure activities.
+            </p>
+
+            <div class="package-price">
+                ₹18,999
+            </div>
+
+            <ul>
+
+                <li>✓ 5 Days / 4 Nights</li>
+
+                <li>✓ Hotel Stay</li>
+
+                <li>✓ Breakfast</li>
+
+                <li>✓ Mountain Tour</li>
+
+                <li>✓ Local Transport</li>
+
+            </ul>
+
+            <button
+                class="book-button"
+                onclick="selectDestination('Manali')"
+            >
+                Book Package
+            </button>
+
+        </div>
+
+
+        <div class="package-card">
+
+            <h3>
+                Royal Rajasthan
+            </h3>
+
+            <p>
+                Explore India's royal heritage.
+            </p>
+
+            <div class="package-price">
+                ₹20,999
+            </div>
+
+            <ul>
+
+                <li>✓ 6 Days / 5 Nights</li>
+
+                <li>✓ Premium Hotel</li>
+
+                <li>✓ Breakfast</li>
+
+                <li>✓ Palace Tour</li>
+
+                <li>✓ Private Transport</li>
+
+            </ul>
+
+            <button
+                class="book-button"
+                onclick="selectDestination('Jaipur')"
+            >
+                Book Package
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     WHY CHOOSE US
+========================= -->
+
+<section class="why-us">
+
+    <div class="section-title">
+
+        <h2>
+            Why Choose TravelEase?
+        </h2>
+
+        <p>
+            We make your journey simple and memorable.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                💰
+            </div>
+
+            <h3>
+                Best Prices
+            </h3>
+
+            <p>
+                Affordable travel packages
+                for every budget.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔒
+            </div>
+
+            <h3>
+                Secure Booking
+            </h3>
+
+            <p>
+                Your booking information
+                is protected.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🌎
+            </div>
+
+            <h3>
+                Amazing Destinations
+            </h3>
+
+            <p>
+                Explore beautiful destinations
+                across India.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📞
+            </div>
+
+            <h3>
+                24/7 Support
+            </h3>
+
+            <p>
+                Our support team is available
+                whenever you need help.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     BOOKING
+========================= -->
+
+<section class="booking-section" id="booking">
+
+    <div class="section-title">
+
+        <h2>
+            Book Your Trip
+        </h2>
+
+        <p>
+            Fill in your details to reserve your journey.
+        </p>
+
+    </div>
+
+
+    <div class="booking-container">
+
+        <h2>
+            Travel Booking Form
+        </h2>
+
+
+        <form onsubmit="submitBooking(event)">
+
+
+            <div class="form-group">
+
+                <label>
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter phone number"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Destination
+                </label>
+
+                <select id="bookingDestination" required>
+
+                    <option value="">
+                        Select Destination
+                    </option>
+
+                    <option value="Goa">
+                        Goa
+                    </option>
+
+                    <option value="Kerala">
+                        Kerala
+                    </option>
+
+                    <option value="Manali">
+                        Manali
+                    </option>
+
+                    <option value="Jaipur">
+                        Jaipur
+                    </option>
+
+                    <option value="Mumbai">
+                        Mumbai
+                    </option>
+
+                    <option value="Ladakh">
+                        Ladakh
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Travel Date
+                </label>
+
+                <input
+                    type="date"
+                    id="bookingDate"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Number of Travellers
+                </label>
+
+                <input
+                    type="number"
+                    id="bookingTravellers"
+                    min="1"
+                    value="1"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Package
+                </label>
+
+                <select id="bookingPackage">
+
+                    <option value="Standard">
+                        Standard Package
+                    </option>
+
+                    <option value="Premium">
+                        Premium Package
+                    </option>
+
+                    <option value="Luxury">
+                        Luxury Package
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="submit-booking"
+            >
+                Confirm Booking
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer id="contact">
+
+    <div class="footer-grid">
+
+
+        <div class="footer-column">
+
+            <h3>
+                TravelEase
+            </h3>
+
+            <p>
+                Discover amazing destinations,
+                affordable packages and
+                unforgettable journeys.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#destinations">
+                Destinations
+            </a>
+
+            <a href="#packages">
+                Packages
+            </a>
+
+            <a href="#booking">
+                Book Now
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Contact Us
+            </h3>
+
+            <p>
+                📧 support@travelease.com
+            </p>
+
+            <p>
+                📞 +91 98765 43210
+            </p>
+
+            <p>
+                📍 Chennai, India
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 TravelEase.
+        All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================
+     LOGIN MODAL
+========================= -->
+
+<div class="modal" id="loginModal">
+
+    <div class="modal-content">
+
+        <span
+            class="close"
+            onclick="closeLogin()"
+        >
+            ×
+        </span>
+
+        <h2>
+            Login
+        </h2>
+
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="Email"
+        >
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Password"
+        >
+
+        <button onclick="login()">
+            Login
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchTrips() {
+
+    const destination =
+        document.getElementById(
+            "searchDestination"
+        ).value.trim();
+
+    const date =
+        document.getElementById(
+            "searchDate"
+        ).value;
+
+    const travellers =
+        document.getElementById(
+            "searchTravellers"
+        ).value;
+
+
+    if (destination === "") {
+
+        alert(
+            "Please enter a destination."
+        );
+
+        return;
+    }
+
+
+    if (date === "") {
+
+        alert(
+            "Please select a travel date."
+        );
+
+        return;
+    }
+
+
+    alert(
+        "Searching trips...\n\n" +
+        "Destination: " + destination +
+        "\nTravel Date: " + date +
+        "\nTravellers: " + travellers
+    );
+
+
+    document
+        .getElementById("destinations")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+}
+
+
+
+/* =========================
+   SELECT DESTINATION
+========================= */
+
+function selectDestination(destination) {
+
+    document.getElementById(
+        "bookingDestination"
+    ).value = destination;
+
+
+    document
+        .getElementById("booking")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+}
+
+
+
+/* =========================
+   BOOKING
+========================= */
+
+function submitBooking(event) {
+
+    event.preventDefault();
+
+
+    const name =
+        document.getElementById(
+            "fullName"
+        ).value;
+
+    const destination =
+        document.getElementById(
+            "bookingDestination"
+        ).value;
+
+    const date =
+        document.getElementById(
+            "bookingDate"
+        ).value;
+
+    const travellers =
+        document.getElementById(
+            "bookingTravellers"
+        ).value;
+
+
+    const bookingId =
+        "TRV" +
+        Math.floor(
+            100000 +
+            Math.random() * 900000
+        );
+
+
+    alert(
+        "🎉 BOOKING CONFIRMED!\n\n" +
+
+        "Booking ID: " +
+        bookingId +
+
+        "\nName: " +
+        name +
+
+        "\nDestination: " +
+        destination +
+
+        "\nTravel Date: " +
+        date +
+
+        "\nTravellers: " +
+        travellers +
+
+        "\n\nThank you for choosing TravelEase!"
+    );
+
+
+    document
+        .querySelector(
+            ".booking-container form"
+        )
+        .reset();
+}
+
+
+
+/* =========================
+   LOGIN MODAL
+========================= */
+
+function openLogin() {
+
+    document.getElementById(
+        "loginModal"
+    ).style.display = "flex";
+}
+
+
+function closeLogin() {
+
+    document.getElementById(
+        "loginModal"
+    ).style.display = "none";
+}
+
+
+function login() {
+
+    const email =
+        document.getElementById(
+            "loginEmail"
+        ).value;
+
+    const password =
+        document.getElementById(
+            "loginPassword"
+        ).value;
+
+
+    if (
+        email === "" ||
+        password === ""
+    ) {
+
+        alert(
+            "Please enter email and password."
+        );
+
+        return;
+    }
+
+
+    alert(
+        "Login successful!\n\n" +
+        "Welcome to TravelEase!"
+    );
+
+
+    closeLogin();
+}
+
+
+
+/* =========================
+   CLOSE MODAL
+========================= */
+
+window.onclick = function(event) {
+
+    const modal =
+        document.getElementById(
+            "loginModal"
+        );
+
+    if (event.target === modal) {
+
+        modal.style.display = "none";
+
+    }
+
+};
+
+
+
+/* =========================
+   SET MINIMUM DATE
+========================= */
+
+const today =
+    new Date()
+        .toISOString()
+        .split("T")[0];
+
+
+document.getElementById(
+    "searchDate"
+).min = today;
+
+
+document.getElementById(
+    "bookingDate"
+).min = today;
+
+</script>
+
+</body>
+</html>
